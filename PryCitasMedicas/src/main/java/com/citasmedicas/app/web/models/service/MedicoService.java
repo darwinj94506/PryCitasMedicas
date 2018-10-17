@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.citasmedicas.app.web.models.dao.IMedicoDAO;
 import com.citasmedicas.app.web.models.entity.Medico;
-
+@Service 
 public class MedicoService implements IMedicoService{
 	@Autowired
 	private IMedicoDAO dao;

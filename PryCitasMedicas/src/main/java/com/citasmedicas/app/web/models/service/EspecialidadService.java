@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.citasmedicas.app.web.models.dao.IEspecialidadDAO;
 
 import com.citasmedicas.app.web.models.entity.Especialidad;
 
+@Service
 public class EspecialidadService implements IEspecialidadService {
 	@Autowired
 	private IEspecialidadDAO dao;
