@@ -5,7 +5,8 @@
 <title th:text=${title}>Insert title here</title>
 </head>
 <body>
-	<h1 th:text=${title}></h1>
+	<h1 th:text=${title}></h1><hr/>
+	<div th:if="${error != null}" th:text="${error}"></div>
 	<hr/>
 	<table>
 		<thead>
@@ -15,6 +16,9 @@
 		<th>Nombre</th>
 		<th>Telefono</th>
 		<th>Licencia</th>
+		<th>
+		   <a th:href="@{/medico/form}">Nuevo</a>
+		</th>
 		</thead>
 		<tbody>
 		<tr th:each="med: ${medicos}">
@@ -23,6 +27,10 @@
 			<td th:text="${med.nombre}"></td>
 			<td th:text="${med.telefono}"></td>
 			<td th:text="${med.licencia}"></td>
+			<td>
+				<a th:href="@{/medico/form/} + ${med.idmedico}">Editar</a>
+				<a th:href="@{/medico/card/} + ${med.idmedico}">ver</a>
+			</td>
 		</tr>
 		</tbody>
 	</table>
