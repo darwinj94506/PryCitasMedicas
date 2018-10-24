@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title th:text=${title}>Insert title here</title>
+</head>
+<body>
+	<h1></h1>
+	<hr />
+	<fieldset>
+		<label>Cedula</label>
+		<span  th:text="${medico.cedula}"> </span> <br/>
+		<label>Nombre</label>
+		<span type="text" th:text="${medico.nombre}"></span> <br/>
+		<label>Telefono</label>
+		<span type="text" th:text="${medico.telefono}"> </span> <br/>
+		<label>Licencia</label>
+		<span type="text" th:text="${medico.licencia}"></span> <br/>
+		
+	</fieldset>
+	<a th:href="@{/medico/delete/} + ${medico.idmedico}" ht:text="'eliminar'" onclick="return confirm('¿Desea elimnar al medico?');">Eliminar</a>
+
+</body>
+</html>

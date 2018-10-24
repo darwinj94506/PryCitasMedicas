@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/medico/form}" th:object="${medico}" method="post">
+	<fieldset>
+		<label>Cedula</label>
+		<input type="text" th:field="*{cedula}" /> <br/>
+		<label>Nombre</label>
+		<input type="text" th:field="*{nombre}" /> <br/>
+		<label>Telefono</label>
+		<input type="text" th:field="*{telefono}" /> <br/>
+		<label>Licencia</label>
+		<input type="text" th:field="*{licencia}" /> <br/>
+		<input type="hidden" th:field="*{idmedico}"/>	
+		<input type="submit" value="Guardar"/>
+	
+	</fieldset>
+</form>
+
+</body>
+</html>
