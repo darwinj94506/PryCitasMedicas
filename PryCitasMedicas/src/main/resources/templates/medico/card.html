@@ -15,10 +15,10 @@
 		<label>Telefono</label>
 		<span type="text" th:text="${medico.telefono}"> </span> <br/>
 		<label>Licencia</label>
-		<span type="text" th:text="${medico.licencia}"></span> <br/>
+		<span  th:text="${medico.licencia}"></span> <br/>
 		
 	</fieldset>
-	<a th:href="@{/medico/delete/} + ${medico.idmedico}" ht:text="'eliminar'" onclick="return confirm('¿Desea elimnar al medico?');">Eliminar</a>
+	<a th:href="@{/medico/delete/} + ${medico.idmedico}" th:text="'eliminar'" onclick="return confirm('¿Desea elimnar al medico?');">Eliminar</a>
 
 </body>
 </html>
