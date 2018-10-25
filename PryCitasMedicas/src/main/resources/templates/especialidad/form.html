@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/especialidad/form}" th:object="${especialidad}" method="post">
+	<fieldset>
+		<label>Especialidad</label>
+		<input type="text" th:field="*{nombre}" /> <br/>
+		<input type="hidden" th:field="*{idespecialidad}"/>	
+		<input type="submit" value="Guardar"/>
+	
+	</fieldset>
+</form>
+
+</body>
+</html>

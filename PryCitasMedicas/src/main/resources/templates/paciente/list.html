@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text=${title}>Insert title here</title>
+</head>
+<body>
+	<h1 th:text=${title}></h1><hr/>
+	<div th:if="${error != null}" th:text="${error}"></div>
+	<hr/>
+	<table>
+		<thead>
+		<tr>
+		<th>ID</th>
+		<th>Cedula</th>
+		<th>Nombre</th>
+		<th>Fecha de nacimiento</tr>
+		<th>Telefono</th>
+		<th>Email</th>
+		<th>
+		   <a th:href="@{/paciente/form}">Nuevo</a>
+		</th>
+		</thead>
+		<tbody>
+		<tr th:each="pac: ${pacientes}">
+			<td th:text="${pac.idpaciente}"></td>
+			<td th:text="${pac.cedula}"></td>
+			<td th:text="${pac.nombre}"></td>
+			<td th:text="${pac.fechanacimiento}"></td>
+			<td th:text="${pac.telefono}"></td>
+			<td th:text="${pac.email}"></td>
+			<td>
+				<a th:href="@{/paciente/form/} + ${pac.idpaciente}">Editar</a>
+				<a th:href="@{/paciente/card/} + ${pac.idpaciente}">ver</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

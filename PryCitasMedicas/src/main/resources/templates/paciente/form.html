@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/paciente/form}" th:object="${paciente}" method="post">
+	<fieldset>
+		<label>Cedula</label>
+		<input type="text" th:field="*{cedula}" /> <br/>
+		<label>Nombre</label>
+		<input type="text" th:field="*{nombre}" /> <br/>
+		<label>Nacimiento</label>
+		<input type="date" th:field="*{fechanacimiento}" /> <br/>
+		<label>Telefono</label>
+		<input type="text" th:field="*{telefono}" /> <br/>
+		<label>Email</label>
+		<input type="text" th:field="*{email}" /> <br/>
+		<input type="hidden" th:field="*{idpaciente}"/>	
+		<input type="submit" value="Guardar"/>
+	
+	</fieldset>
+</form>
+
+</body>
+</html>

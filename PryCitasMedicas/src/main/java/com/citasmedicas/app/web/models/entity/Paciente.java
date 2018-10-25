@@ -13,6 +13,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 @Table(name = "PACIENTE")
@@ -31,7 +33,9 @@ public class Paciente implements Serializable {
     @Size(max = 55)
     @Column(name = "NOMBRE")
     private String nombre;
+    
     @Column(name = "FECHANACIMIENTO")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date fechanacimiento;
     @Size(max = 15)
