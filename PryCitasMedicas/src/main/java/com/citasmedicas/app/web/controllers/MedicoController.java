@@ -2,9 +2,12 @@ package com.citasmedicas.app.web.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,8 +44,14 @@ public class MedicoController {
 	}
 	
 	@PostMapping("/form")
-	public String save(Medico medico, RedirectAttributes flash ){ 
+	public String save(@Valid Medico medico, BindingResult result,  RedirectAttributes flash, Model model ){ 
 		try {
+			if(result.hasErrors()) {
+				model.addAttribute("title","nuevo medico");
+				model.addAttribute("medico",medico);
+				return "medico/form";
+				
+			}
 			service.saveMedico(medico);
 			flash.addFlashAttribute("success","El medico se creo correctamente");
 		}
