@@ -2,16 +2,22 @@ package com.citasmedicas.app.web.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -31,7 +37,9 @@ public class Paciente implements Serializable {
     @Size(max = 55)
     @Column(name = "NOMBRE")
     private String nombre;
+    
     @Column(name = "FECHANACIMIENTO")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date fechanacimiento;
     @Size(max = 15)
@@ -41,7 +49,10 @@ public class Paciente implements Serializable {
     @Column(name = "EMAIL")
     private String email;
  
+    @OneToMany(mappedBy="paciente",fetch=FetchType.LAZY)
+    private List<Atencion> atenciones;
     
+   
 
     public Paciente() {
     }
@@ -97,6 +108,12 @@ public class Paciente implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+
+	public List<Atencion> getAtenciones() {
+		return atenciones;
+	}
+	
 
     
 }

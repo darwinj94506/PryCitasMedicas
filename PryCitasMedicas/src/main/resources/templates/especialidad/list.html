@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text=${title}>Insert title here</title>
+</head>
+<body>
+	<h1 th:text=${title}></h1><hr/>
+	<div th:if="${error != null}" th:text="${error}"></div>
+	<hr/>
+	<table>
+		<thead>
+		<tr>
+		<th>ID</th>
+		<th>Nombre</th>
+		<th>
+		   <a th:href="@{/especialidad/form}">Nuevo</a>
+		</th>
+		</thead>
+		<tbody>
+		<tr th:each="esp: ${especialidades}">
+			<td th:text="${esp.idespecialidad}"></td>
+			<td th:text="${esp.nombre}"></td>
+			<td>
+				<a th:href="@{/especialidad/form/} + ${esp.idespecialidad}">Editar</a>
+				<a th:href="@{/especialidad/card/} + ${esp.idespecialidad}">ver</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

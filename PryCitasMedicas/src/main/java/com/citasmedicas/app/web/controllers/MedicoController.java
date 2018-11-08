@@ -2,13 +2,18 @@ package com.citasmedicas.app.web.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.citasmedicas.app.web.models.entity.Medico;
@@ -16,6 +21,7 @@ import com.citasmedicas.app.web.models.service.IMedicoService;
 
 @Controller
 @RequestMapping("/medico")
+@SessionAttributes("medico") //se guarda en el servidor cada vez que se agregue un atributo con el nombre medico
 public class MedicoController {
 	@Autowired
 	private IMedicoService service;
@@ -41,9 +47,16 @@ public class MedicoController {
 	}
 	
 	@PostMapping("/form")
-	public String save(Medico medico, RedirectAttributes flash ){ 
+	public String save(@Valid Medico medico, BindingResult result,  RedirectAttributes flash, Model model,SessionStatus sesion ){ 
 		try {
+			if(result.hasErrors()) {
+				model.addAttribute("title","Regsitro de medico");
+				//model.addAttribute("medico",medico); ya no hace falta por que el medico esta guardado en sesion
+				return "medico/form";
+				
+			}
 			service.saveMedico(medico);
+			sesion.setComplete();
 			flash.addFlashAttribute("success","El medico se creo correctamente");
 		}
 		catch(Exception ex) {
@@ -69,7 +82,6 @@ public class MedicoController {
 			flash.addFlashAttribute("error","Medico no encontrado:".concat(ex.getMessage()));
 			return "redirect:/medico/list";
 		}
-		
 		
 		
 	}

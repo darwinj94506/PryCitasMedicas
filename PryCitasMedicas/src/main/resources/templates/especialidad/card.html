@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title th:text=${title}>Insert title here</title>
+</head>
+<body>
+	<h1></h1>
+	<hr />
+	<fieldset>
+		<label>Id</label>
+		<span  th:text="${especialidad.idespecialidad}"> </span> <br/>
+		<label>Nombre</label>
+		<span type="text" th:text="${especialidad.nombre}"></span> <br/>
+		
+		
+	</fieldset>
+	<a th:href="@{/especialidad/delete/} + ${especialidad.idespecialidad}" th:text="'eliminar'" onclick="return confirm('¿Desea elimnar especialidad?');">Eliminar</a>
+
+</body>
+</html>

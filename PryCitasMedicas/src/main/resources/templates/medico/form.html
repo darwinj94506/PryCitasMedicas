@@ -8,13 +8,25 @@
 <form th:action="@{/medico/form}" th:object="${medico}" method="post">
 	<fieldset>
 		<label>Cedula</label>
-		<input type="text" th:field="*{cedula}" /> <br/>
+		<input type="text" th:field="*{cedula}" />
+		<small th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></small>
+		<br/>
+		
 		<label>Nombre</label>
-		<input type="text" th:field="*{nombre}" /> <br/>
+		<input type="text" th:field="*{nombre}" />
+		<small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+		<br/>
+
 		<label>Telefono</label>
-		<input type="text" th:field="*{telefono}" /> <br/>
+		<input type="text" th:field="*{telefono}" /> 
+		<small th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+		<br/>
+		
 		<label>Licencia</label>
-		<input type="text" th:field="*{licencia}" /> <br/>
+		<input type="text" th:field="*{licencia}" /> 
+		<small th:if="${#fields.hasErrors('licencia')}" th:errors="*{licencia}"></small>
+		<br/>
+		
 		<input type="hidden" th:field="*{idmedico}"/>	
 		<input type="submit" value="Guardar"/>
 	
