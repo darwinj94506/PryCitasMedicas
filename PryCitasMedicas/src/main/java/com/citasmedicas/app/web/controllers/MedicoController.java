@@ -53,7 +53,6 @@ public class MedicoController {
 				model.addAttribute("title","Regsitro de medico");
 				//model.addAttribute("medico",medico); ya no hace falta por que el medico esta guardado en sesion
 				return "medico/form";
-				
 			}
 			service.saveMedico(medico);
 			sesion.setComplete();

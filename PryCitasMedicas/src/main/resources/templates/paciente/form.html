@@ -8,15 +8,25 @@
 <form th:action="@{/paciente/form}" th:object="${paciente}" method="post">
 	<fieldset>
 		<label>Cedula</label>
-		<input type="text" th:field="*{cedula}" /> <br/>
+		<input type="text" th:field="*{cedula}" /> 
+		<small th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></small>
+		<br/>
 		<label>Nombre</label>
-		<input type="text" th:field="*{nombre}" /> <br/>
+		<input type="text" th:field="*{nombre}" /> 
+		<small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+		<br/>
 		<label>Nacimiento</label>
-		<input type="date" th:field="*{fechanacimiento}" /> <br/>
+		<input type="date" th:field="*{fechanacimiento}" /> 
+		<small th:if="${#fields.hasErrors('fechanacimiento')}" th:errors="*{fechanacimiento}"></small>
+		<br/>
 		<label>Telefono</label>
-		<input type="text" th:field="*{telefono}" /> <br/>
+		<input type="text" th:field="*{telefono}" /> 
+		<small th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+		<br/>
 		<label>Email</label>
-		<input type="text" th:field="*{email}" /> <br/>
+		<input type="text" th:field="*{email}" /> 
+		<small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+		<br/>
 		<input type="hidden" th:field="*{idpaciente}"/>	
 		<input type="submit" value="Guardar"/>
 	

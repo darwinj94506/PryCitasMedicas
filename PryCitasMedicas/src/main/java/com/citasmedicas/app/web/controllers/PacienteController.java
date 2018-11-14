@@ -1,21 +1,26 @@
 package com.citasmedicas.app.web.controllers;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.citasmedicas.app.web.models.entity.Medico;
 import com.citasmedicas.app.web.models.entity.Paciente;
 import com.citasmedicas.app.web.models.service.IPacienteService;
 
 @Controller
 @RequestMapping("/paciente")
+@SessionAttributes("paciente") 
 public class PacienteController {
 
 	@Autowired
@@ -40,10 +45,15 @@ public class PacienteController {
 	}
 	
 	@PostMapping("/form")
-	public String save(Paciente paciente, RedirectAttributes flash) {
+	public String save(@Valid Paciente paciente, BindingResult result, RedirectAttributes flash, Model model, SessionStatus sesion) {
 		try {
+			if(result.hasErrors()) {
+				model.addAttribute("title","Registro de Paciente");
+				return "paciente/form";
+			}
 			service.savePaciente(paciente);
-			flash.addAttribute("success","El paciente se ha registrado");
+			sesion.setComplete();
+			flash.addFlashAttribute("success","El paciente se ha registrado correctamente");
 		}catch(Exception ex) {
 			flash.addAttribute("error","hubo un error".concat(ex.getMessage()));
 		}

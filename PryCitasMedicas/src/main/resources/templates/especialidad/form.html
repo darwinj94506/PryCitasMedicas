@@ -8,7 +8,10 @@
 <form th:action="@{/especialidad/form}" th:object="${especialidad}" method="post">
 	<fieldset>
 		<label>Especialidad</label>
-		<input type="text" th:field="*{nombre}" /> <br/>
+		<input type="text" th:field="*{nombre}" /> 
+		<small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+		
+		<br/>
 		<input type="hidden" th:field="*{idespecialidad}"/>	
 		<input type="submit" value="Guardar"/>
 	

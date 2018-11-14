@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,22 +33,31 @@ public class Paciente implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDPACIENTE")
     private Integer idpaciente;
+    
     @Size(max = 15)
     @Column(name = "CEDULA")
+    @NotEmpty
     private String cedula;
+    
     @Size(max = 55)
     @Column(name = "NOMBRE")
+    @NotEmpty
     private String nombre;
     
     @Column(name = "FECHANACIMIENTO")
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
+    @NotNull
     private Date fechanacimiento;
+    
     @Size(max = 15)
     @Column(name = "TELEFONO")
+    @NotEmpty
     private String telefono;
+    
     @Size(max = 15)
     @Column(name = "EMAIL")
+    @NotEmpty
     private String email;
  
     @OneToMany(mappedBy="paciente",fetch=FetchType.LAZY)

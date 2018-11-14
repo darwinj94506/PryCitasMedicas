@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 
@@ -26,8 +27,10 @@ public class Especialidad implements Serializable {
     @Basic(optional = false)
     @Column(name = "IDESPECIALIDAD")
     private Integer idespecialidad;
+    
     @Size(max = 55)
     @Column(name = "NOMBRE")
+    @NotEmpty
     private String nombre;
     
     @OneToMany(mappedBy="especialidad",fetch=FetchType.LAZY)
