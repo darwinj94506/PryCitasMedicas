@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout :: head">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<form th:action="@{/medico/form}" th:object="${medico}" method="post">
-	<fieldset>
-		<label>Cedula</label>
-		<input type="text" th:field="*{cedula}" />
-		<small th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></small>
+	<header th:replace="layout:: header"></header>
+	<div class="container">
+		<form th:action="@{/medico/form}" th:object="${medico}" method="post">
+			<fieldset>
+				<label>Cedula</label>
+				<input class="form-control" type="text" th:field="*{cedula}" />
+				<small th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></small>
+				
+				<br/>
+				
+				<label>Nombre</label>
+				<input class="form-control" type="text" th:field="*{nombre}" />
+				<small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+				<br/>
 		
-		<br/>
-		
-		<label>Nombre</label>
-		<input type="text" th:field="*{nombre}" />
-		<small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
-		<br/>
+				<label>Telefono</label>
+				<input class="form-control" type="text" th:field="*{telefono}" /> 
+				<small th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+				<br/>
+				
+				<label>Licencia</label>
+				<input class="form-control" type="text" th:field="*{licencia}" /> 
+				<small th:if="${#fields.hasErrors('licencia')}" th:errors="*{licencia}"></small>
+				<br/>
+				
+				<input type="hidden" th:field="*{idmedico}"/>	
+				<input type="submit" value="Guardar"/>
+			
+			</fieldset>
+		</form>
+	</div>
+	<footer th:replace="layout :: footer">
+	</footer>
 
-		<label>Telefono</label>
-		<input type="text" th:field="*{telefono}" /> 
-		<small th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
-		<br/>
-		
-		<label>Licencia</label>
-		<input type="text" th:field="*{licencia}" /> 
-		<small th:if="${#fields.hasErrors('licencia')}" th:errors="*{licencia}"></small>
-		<br/>
-		
-		<input type="hidden" th:field="*{idmedico}"/>	
-		<input type="submit" value="Guardar"/>
-	
-	</fieldset>
-</form>
 
 </body>
 </html>

@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout :: head">
 <meta charset="UTF-8">
-<title th:text=${title}>Insert title here</title>
+<title >Insert title here</title>
 </head>
 <body>
-	<h1 th:text=${title}></h1><hr/>
-	<div th:if="${error != null}" th:text="${error}"></div>
-	<div th:if="${success != null}" th:text="${success}"></div>
-	<hr/>
-	<table>
-		<thead>
-		<tr>
-		<th>ID</th>
-		<th>Cedula</th>
-		<th>Nombre</th>
-		<th>Telefono</th>
-		<th>Licencia</th>
-		<th>
-		   <a th:href="@{/medico/form}">Nuevo</a>
-		</th>
-		</thead>
-		<tbody>
-		<tr th:each="med: ${medicos}">
-			<td th:text="${med.idmedico}"></td>
-			<td th:text="${med.cedula}"></td>
-			<td th:text="${med.nombre}"></td>
-			<td th:text="${med.telefono}"></td>
-			<td th:text="${med.licencia}"></td>
-			<td>
-				<a th:href="@{/medico/form/} + ${med.idmedico}">Editar</a>
-				<a th:href="@{/medico/card/} + ${med.idmedico}">ver</a>
-			</td>
-		</tr>
-		</tbody>
-	</table>
+	<header th:replace="layout:: header"></header>
+	<div class="container">
+		<h1 th:text=${title}></h1><hr/>
+		
+		<hr/>
+		<table>
+			<thead>
+			<tr>
+			<th>ID</th>
+			<th>Cedula</th>
+			<th>Nombre</th>
+			<th>Telefono</th>
+			<th>Licencia</th>
+			<th>
+			   <a th:href="@{/medico/form}">Nuevo</a>
+			</th>
+			</thead>
+			<tbody>
+			<tr th:each="med: ${medicos}">
+				<td th:text="${med.idmedico}"></td>
+				<td th:text="${med.cedula}"></td>
+				<td th:text="${med.nombre}"></td>
+				<td th:text="${med.telefono}"></td>
+				<td th:text="${med.licencia}"></td>
+				<td>
+					<a th:href="@{/medico/form/} + ${med.idmedico}">Editar</a>
+					<a th:href="@{/medico/card/} + ${med.idmedico}">ver</a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<footer th:replace="layout :: footer">
+	</footer>
 
 </body>
 </html>

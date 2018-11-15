@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head th:replace="layout :: head">
 <meta charset="UTF-8">
 <title th:text=${title}>Insert title here</title>
 </head>
 <body>
-	<h1></h1>
-	<hr />
+	<header th:replace="layout:: header"></header>
+
+	<div class="container">
 	<fieldset>
 		<label>Cedula</label>
 		<span  th:text="${medico.cedula}"> </span> <br/>
@@ -19,6 +20,10 @@
 		
 	</fieldset>
 	<a th:href="@{/medico/delete/} + ${medico.idmedico}" th:text="'eliminar'" onclick="return confirm('¿Desea elimnar al medico?');">Eliminar</a>
-
+	
+	</div>
+	<footer th:replace="layout :: footer">
+	</footer>
+	
 </body>
 </html>
