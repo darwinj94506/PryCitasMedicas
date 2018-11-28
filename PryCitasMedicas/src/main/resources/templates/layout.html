@@ -9,11 +9,11 @@
 <body>
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Inicio</a>
-			<button class="navbar-toogler" type="button" data-toogle="collapse" arial-label="Toggle navigation-icon">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse">
+			<a class="navbar-brand"  th:href="@{/}">Hospital DJ.com</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{/medico/list}">Medicos</a>
@@ -22,10 +22,10 @@
 						<a class="nav-link" th:href="@{/especialidad/list}">Especialidades</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" th:href="@{/pacientes/list}">Pacientes</a>
+						<a class="nav-link" th:href="@{/paciente/list}">Pacientes</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" th:href="@{/pacientes/list}">Atenciones</a>
+						<a class="nav-link" th:href="@{/atencion/setup}">Atenciones</a>
 					</li>
 				</ul>
 			</div>
@@ -38,7 +38,7 @@
 	</header>
 	
 	<div class="container"></div>
-	<footer th:fragment="footer">
+	<footer class="container" th:fragment="footer">
 		<th/>
 		<p>Hospital latacunga</p>
 		<P>Desarrollado por darwin  &copy; 2018</P>

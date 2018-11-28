@@ -32,12 +32,40 @@
 				
 				<input type="hidden" th:field="*{idmedico}"/>	
 				<input type="submit" value="Guardar"/>
+				
+				<button type="button" id="btn-ajax">Ajax </button>
+				<div id="list">
+				</div>
+				
 			
 			</fieldset>
 		</form>
 	</div>
 	<footer th:replace="layout :: footer">
 	</footer>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#btn-ajax").click(function(){
+				$.ajax({
+					url:"list",
+					method:"GET",
+					dataType:"html",
+					success:function(html5){
+						$("#list").html(html5);
+						
+					},
+					error:function(err){
+						$("#list").html(err);
+					}
+					
+				});
+			});
+			
+		});
+	
+	</script>
+	
 
 
 </body>

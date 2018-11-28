@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="layout :: header"></header>
+	<div class="container">
+		<div class="row">
+			<fieldset>
+				<label>Semana</label>
+				<br>
+				<label>Medico</label>
+				<select class="form-control" id="cmbMedico">
+					<option value="0">--selecione--</option>
+					<option th:each="med : ${medicos}" 
+						th:value="${med.idmedico}" 
+						th:text="${med.nombre}">
+					</option>
+					
+				</select>
+				
+			</fieldset>
+		</div>
+		<div class="row" id="tblHorario">
+		</div>
+	
+	
+	</div>
+	<footer th:replace="layout :: footer"></footer>
+
+</body>
+</html>
