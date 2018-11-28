@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xlmns:th="http://www.thymeleaf.org">
 <head th:replace="layout :: head">
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<body>	
 	<header th:replace="layout :: header"></header>
+	<h1>Registro de atenciones médicas</h1>
 	<div class="container">
-		<div class="row">
+		<div class="row">			
 			<fieldset>
-				<label>Semana</label>
-				<br>
-				<label>Medico</label>
+				<label>Inicio:</label>
+				<input id="dtpInicio" type="date"/>
+				<br/>
+				<label>Fin:</label>
+				<input id="dtpFin" type="date"/>
+				<br/>
+				<label>M&eacute;dico</label>
 				<select class="form-control" id="cmbMedico">
-					<option value="0">--selecione--</option>
-					<option th:each="med : ${medicos}" 
-						th:value="${med.idmedico}" 
-						th:text="${med.nombre}">
-					</option>
-					
+					<option value="0">--Seleccione--</option>
+					<option th:each="med:${medicos}" th:value="${med.idmedico}" th:text="${med.nombre}"></option>
 				</select>
-				
+				<button type="button" class="btn btn-success" id="btnBuscar">
+					<span>Buscar</span>
+				</button>
 			</fieldset>
 		</div>
-		<div class="row" id="tblHorario">
-		</div>
-	
-	
+		<div  id="tblWeek">
+		
+		</div>		
 	</div>
 	<footer th:replace="layout :: footer"></footer>
-
+	<script th:src="@{/js/setup-atencion.js}"></script>
 </body>
 </html>
