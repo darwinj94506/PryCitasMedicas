@@ -9,7 +9,7 @@ function loadWeek(){
 		url:"/atencion/week",
 		method:"GET",
 		dataType:"html",
-		contentType:'aplication/json',
+		contentType:'aplication/json;',
 		data:JSON.stringify(criteria),
 		success:function(html){
 			$("#tblWeek").html(html);
