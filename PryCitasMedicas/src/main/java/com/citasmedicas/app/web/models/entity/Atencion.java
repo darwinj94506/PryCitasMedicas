@@ -57,7 +57,7 @@ public class Atencion implements Serializable {
     
    
     
-    
+    public Atencion() {}
     
 
 	public String getCelda() {

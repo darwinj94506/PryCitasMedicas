@@ -34,7 +34,8 @@ public class AtencionController {
 	}
 	
 	@GetMapping(value="/week/{inicio}/{fin}/{id}", produces="application/json")
-	public @ResponseBody List<Atencion> week(@PathVariable(value="inicio")String inicio,
+	public @ResponseBody List<Atencion> week(
+			@PathVariable(value="inicio")String inicio,
 			@PathVariable(value="fin")String fin,
 			@PathVariable(value="id")Integer id) {
 		List<Atencion> citas =new ArrayList<Atencion>();
@@ -43,12 +44,9 @@ public class AtencionController {
 			Date fechaInicio=new SimpleDateFormat("yyyy-MM-dd").parse(inicio);
 			Date fechaFin=new SimpleDateFormat("yyyy-MM-dd").parse(fin);
 			citas =service.findByFecha(fechaInicio, fechaFin, id);
-
-
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
-		
 		return citas;
 	}
 	

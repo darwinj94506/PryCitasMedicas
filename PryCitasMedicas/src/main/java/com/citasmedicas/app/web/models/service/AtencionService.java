@@ -46,6 +46,7 @@ public class AtencionService implements IAtencionService {
 	}
 	
 	@Override
+	//@Transactional(readOnly=true)
 	public List<Atencion> findByFecha(Date inicio, Date fin, Integer id){
 		List<Atencion> atenciones=this.findAll();
 		List<Atencion> resultado=new ArrayList<Atencion>();

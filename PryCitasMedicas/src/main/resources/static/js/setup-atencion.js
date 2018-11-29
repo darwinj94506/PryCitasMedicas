@@ -1,14 +1,14 @@
 function loadWeek(){
 	var criteria={
 			"inicio":$("#dtpInicio").val(),
-			"fin":$("#dtpInicio").val(),
+			"fin":$("#dtpFin").val(),
 			"id":$("#cmbMedico").val()
 	};
 	
 	$.ajax({
-		url:"/atencion/week/"+criteria.inicio+ "/" +criteria.fin + "/" +criteria.id,
+		url:"/atencion/week/"+criteria.inicio+"/"+criteria.fin +"/"+criteria.id,
 		method:"GET",
-		contentType:'aplication/json',
+		contentType:'application/json',
 		dataType:"json",
 		success:function(json){
 			console.log(json);
@@ -39,6 +39,7 @@ function getToday(){
 }
 
 $(document).ready(function(){
+	alert("llama a load week");
 	loadWeek();
 	$('#dtpInicio').val(getToday());
 	$('#dtpFin').val(getToday());
