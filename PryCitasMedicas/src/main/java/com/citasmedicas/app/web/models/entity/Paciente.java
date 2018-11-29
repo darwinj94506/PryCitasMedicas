@@ -21,6 +21,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "PACIENTE")
@@ -61,6 +63,7 @@ public class Paciente implements Serializable {
     private String email;
  
     @OneToMany(mappedBy="paciente",fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<Atencion> atenciones;
     
    

@@ -16,6 +16,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "MEDICO")
 
@@ -45,6 +47,7 @@ public class Medico implements Serializable {
     private String licencia;
     
     @OneToMany(mappedBy="medico",fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<Atencion> atenciones;
     
 

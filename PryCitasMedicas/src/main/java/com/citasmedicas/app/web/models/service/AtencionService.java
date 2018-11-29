@@ -1,5 +1,7 @@
 package com.citasmedicas.app.web.models.service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,5 +45,18 @@ public class AtencionService implements IAtencionService {
 		
 	}
 	
+	@Override
+	public List<Atencion> findByFecha(Date inicio, Date fin, Integer id){
+		List<Atencion> atenciones=this.findAll();
+		List<Atencion> resultado=new ArrayList<Atencion>();
+		for(Atencion a: atenciones) {
+			if(a.getFecha().after(inicio) && a.getFecha().before(fin)) {
+				if(a.getMedico().getIdmedico()==id) {
+					resultado.add(a);
+				}
+			}
+		}
+		return resultado;
+	}
 
 }

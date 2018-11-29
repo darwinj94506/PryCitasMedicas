@@ -36,6 +36,12 @@ public class Atencion implements Serializable {
     @NotEmpty
     private String observacion;
     
+    
+    @Size(max = 2)
+    @Column(name = "CELDA")
+    @NotEmpty
+    private String celda;
+    
     @JoinColumn(name = "IDPACIENTE", referencedColumnName = "IDPACIENTE")
     @ManyToOne
     private Paciente paciente;
@@ -50,8 +56,57 @@ public class Atencion implements Serializable {
     
     
    
-
     
+    
+    
+
+	public String getCelda() {
+		return celda;
+	}
+
+
+
+	public void setCelda(String celda) {
+		this.celda = celda;
+	}
+
+
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+
+
+	public Especialidad getEspecialidad() {
+		return especialidad;
+	}
+
+
+
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
+	}
+
+
 
 	public Atencion(Integer idatencion) {
 		super();

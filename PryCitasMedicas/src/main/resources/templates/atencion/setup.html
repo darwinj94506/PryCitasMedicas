@@ -23,9 +23,60 @@
 				</button>
 			</fieldset>
 		</div>
-		<div  id="tblWeek">
+		<div class="row">
+				<table  id="tblWeek">
+					<thead>
+						<tr>
+							<th>Lunes</th>
+							<th>Martes</th>
+							<th>Mi&eacute;rcoles</th>
+							<th>Jueves</th>
+							<th>Viernes</th>
+							<th>S&aacute;bado</th>
+						</tr>
+					</thead>
+					<tbody id="tblBodyWeek">
+						<tr>
+							<th><span>07:00 - 07:30</span></th>
+							<th id="a1"></th>
+							<th id="b1"></th>
+							<th id="c1"></th>
+							<th id="d1"></th>
+							<th id="e1"></th>
+							<th id="f1"></th>
+						</tr>
+						<tr>
+							<th><span>08:00 - 08:30</span></th>
+							<th id="a2"></th>
+							<th id="b2"></th>
+							<th id="c2"></th>
+							<th id="d2"></th>
+							<th id="e2"></th>
+							<th id="f2"></th>
+						</tr>
+
+						<tr>
+							<th><span>09:00 - 09:30</span></th>
+							<th id="a3"></th>
+							<th id="b3"></th>
+							<th id="c3"></th>
+							<th id="d3"></th>
+							<th id="e3"></th>
+							<th id="f3"></th>
+						</tr>
+						<tr>
+							<th><span>10:00 - 10:30</span></th>
+							<th id="a4"></th>
+							<th id="b4"></th>
+							<th id="c4"></th>
+							<th id="d4"></th>
+							<th id="e4"></th>
+							<th id="f4"></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		
-		</div>		
 	</div>
 	<footer th:replace="layout :: footer"></footer>
 	<script th:src="@{/js/setup-atencion.js}"></script>

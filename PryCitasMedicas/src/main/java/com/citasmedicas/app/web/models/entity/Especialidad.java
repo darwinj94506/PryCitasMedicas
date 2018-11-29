@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "ESPECIALIDAD")
@@ -34,6 +36,7 @@ public class Especialidad implements Serializable {
     private String nombre;
     
     @OneToMany(mappedBy="especialidad",fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<Atencion> atenciones;
     
     
