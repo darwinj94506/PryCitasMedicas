@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Hospital b&aacute;sico Latacunga: Registro de citas
+	m&eacute;dicas</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/fullcalendar.min.css}" />
+<link rel="stylesheet" th:href="@{/css/fullcalendar.print.min.css}"
+	media="print" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+	crossorigin="anonymous">
 </head>
 <body>
-
+	<header th:replace="layout :: header"></header>
+	<div class="container">
+		<br />
+		<div class="card col-md-12">
+			<div class="card-body">
+				<div class="form-group row">
+					<div class="content col-sm-1">
+						<i class="fas fa-stethoscope fa-2x"></i>
+					</div>
+					<h3 class="card-title col-sm-9" th:text=${title}></h3>
+					<div class="col-sm-2">
+						<a class="btn btn-success" th:href="@{/medico/card/} + ${idmedico}"><i class="fas fa-arrow-circle-left"></i>&nbsp;Volver</a>
+					</div>					
+				</div>
+				<hr />				
+				<div id="tblCalendar"></div>
+				<div id="medicalAppointment" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 id="title" class="modal-title"></h4>
+								<button type="button" class="close" data-dismiss="modal">
+									<span aria-hidden="true">×</span> <span class="sr-only">close</span>
+								</button>								
+							</div>
+							<div class="modal-body">
+							 	<span id="description"></span>
+							</div>
+							<div class="modal-footer">
+								<button id="btnSave" class="btn btn-success" data-dismiss="modal"><i class="fas fa-plus-circle"></i>&nbsp;Guardar</button>
+								<button class="btn btn-danger" data-dismiss="modal"><i class="fas fa-minus-circle"></i>&nbsp;Cancelar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout :: footer"></footer>
+	<script th:src="@{/js/moment.min.js}"></script>
+	<script th:src="@{/js/fullcalendar.min.js}"></script>
+	<script th:src="@{/js/setup-atencion.js}"></script>
 </body>
 </html>
