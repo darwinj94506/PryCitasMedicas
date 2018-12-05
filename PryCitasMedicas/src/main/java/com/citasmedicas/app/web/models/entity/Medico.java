@@ -13,14 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "MEDICO")
-
 public class Medico implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,13 +42,16 @@ public class Medico implements Serializable {
     @Size(max = 5)
     @Column(name = "LICENCIA")
     @NotEmpty
-    private String licencia;
+    private String licencia;    
+    @Size(max = 35)
+    @Column(name = "EMAIL")
+    @NotEmpty
+    private String email;
     
-    @OneToMany(mappedBy="medico",fetch=FetchType.LAZY)
     @JsonIgnore
+    @OneToMany(mappedBy = "medico",fetch=FetchType.LAZY)    
     private List<Atencion> atenciones;
     
-
     public Medico() {
     }
 
@@ -64,7 +65,7 @@ public class Medico implements Serializable {
 
     public void setIdmedico(Integer idmedico) {
         this.idmedico = idmedico;
-    }    @NotNull
+    }
 
     public String getCedula() {
         return cedula;
@@ -89,19 +90,29 @@ public class Medico implements Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
+
     public String getLicencia() {
         return licencia;
     }
 
     public void setLicencia(String licencia) {
         this.licencia = licencia;
-    }
+    }    
     
+    public List<Atencion> getAtenciones(){
+    	return this.atenciones;
+    }
 
-	public List<Atencion> getAtenciones() {
-		return atenciones;
+	public String getEmail() {
+		return email;
 	}
-	
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
+    
+    
+    
 }
+
+

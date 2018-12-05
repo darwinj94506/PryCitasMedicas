@@ -112,6 +112,14 @@ public class MedicoController {
 		return "redirect:/medico/list";
 		
 	}
+	@GetMapping("/agenda/{id}")
+	public String retrieveAgenda(@PathVariable(value = "id") Integer id, Model model, RedirectAttributes flash) {
+		Medico medico = service.findById(id);
+		model.addAttribute("title", "Agenda de citas médicas de ".concat(medico.getNombre()));
+		model.addAttribute("idmedico", medico.getIdmedico());
+		return "medico/agenda";
+	}
+
 	
 	
 

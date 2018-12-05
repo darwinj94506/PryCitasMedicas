@@ -1,49 +1,92 @@
-function loadWeek(){
-	var criteria={
-			"inicio":$("#dtpInicio").val(),
-			"fin":$("#dtpFin").val(),
-			"id":$("#cmbMedico").val()
+function loadData() {
+	var criteria = {
+		inicio : $("#dtpInicio").val(),
+		fin : $("#dtpFin").val(),
+		idmedico : $("#idMedico").val()
 	};
 	
-	$.ajax({
-		url:"/atencion/week/"+criteria.inicio+"/"+criteria.fin +"/"+criteria.id,
-		method:"GET",
-		contentType:'application/json',
-		dataType:"json",
-		success:function(json){
+	$.ajax({		
+		url : "/atencion/agenda",
+		method : "POST",
+		contentType : "application/json",
+		dataType : "json",
+		data : JSON.stringify(criteria),
+		success : function(json) {
 			console.log(json);
 		},
-		error:function(err){
+		error : function(err) {
 			console.log(err);
 		}
 	});
 }
 
-
-function loadTable(){
-	loadWeek();
-	$("#tblBodyWeek").find("td").each(function(index,value){
-		var id=$(value).attr("id");
-		if(id!=undefined){
+function loadTable() {
+	$("#tblBodyWeek").find("td").each(function(index, value) {
+		var id = $(value).attr("id");
+		if (id != undefined) {
 			console.log(id);
 		}
 	});
 }
 
-function getToday(){
-	var now=new Date();
-	var day=("0"+now.getDate()).slice(-2);
-	var month=("0"+(now.getMonth()+1)).slice(-2);
-	var today=now.getFullYear()+"-"+(month)+"-"+(day);
-	return today;
+function updateMedicalAppointment(){
+	
 }
 
-$(document).ready(function(){
-	alert("llama a load week");
-	loadWeek();
-	$('#dtpInicio').val(getToday());
-	$('#dtpFin').val(getToday());
-	$("#btnBuscar").click(function(){
-		loadTable();
-	});
+
+function setupCalendar() {
+
+	$("#tblCalendar").fullCalendar(
+			{
+				defaultView : 'agendaWeek',
+				themeSystem : 'bootstrap4',
+				header : {
+					left : 'prev,next',
+					center : 'title',
+					right : ''
+				},
+				minTime : '08:00:00',
+				maxTime : '17:00:00',
+				monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+						'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+				dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie',
+						'Sab' ],
+				firstDay : 1,
+				defaultDate : new Date(),
+				navLinks : true, 
+				editable : true,
+				eventLimit : true,
+				height : 600,
+				allDayText : 'Hora',
+				eventClick:  function(event, jsEvent, view) {
+		            $('#title').html(event.title);
+		            $('#description').html(event.description);		            
+		            $('#MedicalAppointment').modal();
+		        },
+				events: [
+				    {
+				      title  : 'Juan Pérez',
+				      start  : '2018-12-05 09:00:00',
+				      end  : '2018-12-05 09:30:00',
+				      description : 'PEDIATRÍA - Anita Mejía'
+				    },
+				    {
+				      title  : 'Tatiana Pérez',
+				      start  : '2018-12-05 09:30:00',
+				      end  : '2018-12-05 10:00:00',
+				      description : 'PEDIATRÍA - Anita Mejía'
+				    	  
+				    },
+				    {
+				      title  : 'Miguel Pérez',
+				      start  : '2018-12-06 12:30:00',
+				      end  : '2018-12-06 13:00:00',
+				      description : 'PEDIATRÍA - Anita Mejía'
+				    }
+				  ]
+			});
+}
+
+$(document).ready(function() {
+	setupCalendar();	
 });

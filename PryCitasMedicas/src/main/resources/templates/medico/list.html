@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: head">
-<meta charset="UTF-8">
-<title >Insert title here</title>
-</head>
+<head th:replace="layout :: head"></head>
 <body>
-	<header th:replace="layout:: header"></header>
+	<header th:replace="layout :: header"></header>
 	<div class="container">
-		<h1 th:text=${title}></h1><hr/>
-		
-		<hr/>
-		<table>
-			<thead>
-			<tr>
-			<th>ID</th>
-			<th>Cedula</th>
-			<th>Nombre</th>
-			<th>Telefono</th>
-			<th>Licencia</th>
-			<th>
-			   <a th:href="@{/medico/form}">Nuevo</a>
-			</th>
-			</thead>
-			<tbody>
-			<tr th:each="med: ${medicos}">
-				<td th:text="${med.idmedico}"></td>
-				<td th:text="${med.cedula}"></td>
-				<td th:text="${med.nombre}"></td>
-				<td th:text="${med.telefono}"></td>
-				<td th:text="${med.licencia}"></td>
-				<td>
-					<a th:href="@{/medico/form/} + ${med.idmedico}">Editar</a>
-					<a th:href="@{/medico/card/} + ${med.idmedico}">ver</a>
-				</td>
-			</tr>
-			</tbody>
-		</table>
+		<br />
+		<div class="card col-md-12">
+			<div class="card-body">
+				<div class="form-group row">
+					<div class="content col-sm-1">
+						<i class="far fa-list-alt fa-2x"></i>
+					</div>
+					<h3 class="card-title col-sm-6" th:text="${title}"></h3>
+					<div class="col-sm-4"></div>
+				</div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th><i class="fas fa-user-md fa-2x"></i>&nbsp;Nombre</th>
+							<th><i class="fas far fa-address-card fa-2x"></i>&nbsp;C&eacute;dula</th>
+							<th><i class="fas fa-phone fa-2x"></i>&nbsp;Tel&eacute;fono</th>
+							<th><i class="fas fa-at fa-2x"></i>&nbsp;Email</th>
+							<th><i class="fas fa-award fa-2x"></i>&nbsp;Licencia</th>
+							<th><a class="btn btn-sm btn-success"
+								th:href="@{/medico/form}"><i class="fas fa-plus"></i>&nbsp;Nuevo</a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="med: ${medicos}">
+							<td th:text="${med.nombre}"></td>
+							<td th:text="${med.cedula}"></td>
+							<td th:text="${med.telefono}"></td>
+							<td th:text="${med.email}"></td>
+							<td th:text="${med.licencia}"></td>
+							<td><a class="btn btn-sm btn-warning"
+								th:href="@{/medico/form/} + ${med.idmedico}"><i
+									class="fas fa-edit"></i></a> <a class="btn btn-sm btn-primary"
+								th:href="@{/medico/card/} + ${med.idmedico}"><i
+									class="fas fa-eye"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
 	</div>
-	
-	<footer th:replace="layout :: footer">
-	</footer>
-	
-	
+	<footer th:replace="layout :: footer"></footer>
 </body>
 </html>
+
+
